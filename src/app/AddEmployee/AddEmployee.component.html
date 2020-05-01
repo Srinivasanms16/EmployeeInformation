@@ -1,0 +1,93 @@
+
+<form  [formGroup]="empform" novalidate (ngSubmit)="empsubmit()">
+    <div class="form-group row" formGroupName="name" >
+        <label  class="col-sm-2 col-form-label">Name</label>
+        <div class="col-sm-5">
+          <input type="text" class="form-control" id="firstname" 
+          [ngClass] ="{
+            'is-invalid':firstname.invalid && (firstname.dirty || firstname.touched),
+            'is-valid':firstname.valid && (firstname.dirty || firstname.touched)
+        }" 
+          formControlName="firstname" placeholder="firstname" >
+          <div class="invalid-feedback">
+        <p><em>Enter first name.</em></p>
+          </div>
+        </div>
+        <div class="col-sm-5">
+            <input type="text" class="form-control" 
+            [ngClass] ="{
+                'is-invalid':lastname.invalid && (lastname.dirty || lastname.touched),
+                'is-valid':lastname.valid && (lastname.dirty || lastname.touched)
+            }" 
+            id="lastname"  formControlName="lastname" placeholder="lastname" >
+            <div class="invalid-feedback">
+                <p><em>Enter last name.</em></p>
+              </div>
+          </div>
+      </div>
+    <div class="form-group row">
+        <label for="empemail" class="col-sm-2 col-form-label">Email</label>
+        <div class="col-sm-10">
+          <input type="email" class="form-control"
+          [ngClass] ="{
+              'is-invalid':email.invalid && (email.dirty || email.touched),
+              'is-valid':email.valid && (email.dirty || email.touched)
+          }"  id="empemail" formControlName="email"  >
+          <div class="invalid-feedback">
+            <p *ngIf="email.errors && email.errors.required" > <em>Enter email id. </em></p>
+            <p *ngIf="email.errors && email.errors.email" > <em>email id is not proper.</em> </p>
+           </div>
+        </div>
+      </div>
+    <div class="form-group row">
+      <label for="db" class="col-sm-2 col-form-label">DateOfBirth</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="db" 
+        [ngClass] ="{
+            'is-invalid':dateofbirth.invalid && (dateofbirth.dirty || dateofbirth.touched),
+            'is-valid':dateofbirth.valid && (dateofbirth.dirty || dateofbirth.touched)
+        }"
+        formControlName="dateofbirth" placeholder="dd/mm/yyyy" >
+        <div class="invalid-feedback">
+            <p *ngIf="dateofbirth.errors && dateofbirth.errors.required" ><em> enter the date of birth.</em> </p>
+            <p *ngIf="dateofbirth.errors && dateofbirth.errors.pattern" > <em>data of birth is not proper.</em> </p>
+           </div>
+      </div>
+    </div>
+    <div class="form-group row">
+        <label for="role" class="col-sm-2 col-form-label">Role</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" 
+          [ngClass] ="{
+            'is-invalid':role.invalid && (role.dirty || role.touched),
+            'is-valid':role.valid && (role.dirty || role.touched)
+        }"
+          id="role" formControlName="role">
+          <div class="invalid-feedback">
+            <p><em>Enter role.</em></p>
+          </div>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="manager" class="col-sm-2 col-form-label">Manager</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" 
+          [ngClass] ="{
+            'is-invalid':manager.invalid && (manager.dirty || manager.touched),
+            'is-valid':manager.valid && (manager.dirty || manager.touched)
+        }"
+          id="manager"  formControlName="manager">
+          <div class="invalid-feedback">
+           <p><em>Enter manager name.</em></p>
+          </div>
+        </div>
+      </div>
+    <div class="form-group row">
+      <div class="col-sm-10 offset-sm-2">
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
+    </div>
+  </form>
+
+
+

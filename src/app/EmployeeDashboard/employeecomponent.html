@@ -1,0 +1,15 @@
+<div class="container bg-light">
+    <div class="row">
+      <div class="col-4" *ngFor="let emp of emps">
+        <div class="card text-black mb-3 d-block" [highlight]="emp" >
+          <div class="card-header">{{emp.name}}</div>
+          <div class="card-body">
+            <h4 class="card-title">ID-{{emp.id}}</h4>
+            <p class="card-text">Employee is <span isactive >{{emp.isActive ? "Active" : "In active"}}</span></p>
+          </div>
+        </div>
+       </div>
+      </div>
+    </div>
+
+<!--bg-danger text-white-->
