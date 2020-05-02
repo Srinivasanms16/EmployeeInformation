@@ -11,6 +11,7 @@ export class AddEmployee{
     empform:FormGroup;
     name:FormGroup;
     firstname:FormControl;
+    gender:FormControl;
     lastname:FormControl;
     email:FormControl;
     dateofbirth:FormControl;
@@ -26,6 +27,7 @@ export class AddEmployee{
     {
         this.firstname = new FormControl('',[Validators.required]);
         this.lastname = new FormControl('',[Validators.required]);
+        this.gender = new FormControl('male');
         this.email = new FormControl('',[Validators.required,Validators.email]);
         this.dateofbirth=new FormControl('',[Validators.required,Validators.pattern('[0-9]{2}[\/][0-9]{2}[\/][0-9]{4}')]);
         this.role = new FormControl('',[Validators.required]);
@@ -40,6 +42,7 @@ export class AddEmployee{
     formInilization = ()=>{
         this.empform = new FormGroup({
             name:this.name,
+            gender:this.gender,
             email:this.email,
             dateofbirth:this.dateofbirth,
             role:this.role,
@@ -51,7 +54,7 @@ export class AddEmployee{
         if(this.empform.valid){
             debugger;
             let count = this.employees.emp.length;
-            this.employees.emp.push(new employee(this.firstname.value,this.lastname.value,this.email.value,
+            this.employees.emp.push(new employee(this.firstname.value,this.lastname.value,this.gender.value,this.email.value,
                 this.dateofbirth.value,this.role.value,this.manager.value,`id${count++}`,true));
                 alert("successfully added");
                 this.empform.reset();

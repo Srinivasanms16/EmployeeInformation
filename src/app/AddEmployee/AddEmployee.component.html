@@ -1,8 +1,9 @@
 
+<div class="col-lg-12 offset-lg-6" >
 <form  [formGroup]="empform" novalidate (ngSubmit)="empsubmit()">
     <div class="form-group row" formGroupName="name" >
         <label  class="col-sm-2 col-form-label">Name</label>
-        <div class="col-sm-5">
+        <div class="col-sm-3">
           <input type="text" class="form-control" id="firstname" 
           [ngClass] ="{
             'is-invalid':firstname.invalid && (firstname.dirty || firstname.touched),
@@ -13,7 +14,7 @@
         <p><em>Enter first name.</em></p>
           </div>
         </div>
-        <div class="col-sm-5">
+        <div class="col-sm-3">
             <input type="text" class="form-control" 
             [ngClass] ="{
                 'is-invalid':lastname.invalid && (lastname.dirty || lastname.touched),
@@ -25,9 +26,18 @@
               </div>
           </div>
       </div>
+      <div class="form-group row">
+        <label  class="col-sm-2 col-form-label">Gender</label>
+        <div class="col-sm-3">
+          <input type="radio" formControlName="gender" value="male"><span class="ml-2">Male</span> 
+           </div>
+           <div class="col-sm-3">
+            <input type="radio" formControlName="gender" value="female"><span class="ml-2">Female</span>
+        </div>
+        </div>
     <div class="form-group row">
         <label for="empemail" class="col-sm-2 col-form-label">Email</label>
-        <div class="col-sm-10">
+        <div class="col-sm-6">
           <input type="email" class="form-control"
           [ngClass] ="{
               'is-invalid':email.invalid && (email.dirty || email.touched),
@@ -40,8 +50,8 @@
         </div>
       </div>
     <div class="form-group row">
-      <label for="db" class="col-sm-2 col-form-label">DateOfBirth</label>
-      <div class="col-sm-10">
+      <label for="db" class="col-sm-2 col-form-label">DOB</label>
+      <div class="col-sm-6">
         <input type="text" class="form-control" id="db" 
         [ngClass] ="{
             'is-invalid':dateofbirth.invalid && (dateofbirth.dirty || dateofbirth.touched),
@@ -56,7 +66,7 @@
     </div>
     <div class="form-group row">
         <label for="role" class="col-sm-2 col-form-label">Role</label>
-        <div class="col-sm-10">
+        <div class="col-sm-6">
           <input type="text" class="form-control" 
           [ngClass] ="{
             'is-invalid':role.invalid && (role.dirty || role.touched),
@@ -70,7 +80,7 @@
       </div>
       <div class="form-group row">
         <label for="manager" class="col-sm-2 col-form-label">Manager</label>
-        <div class="col-sm-10">
+        <div class="col-sm-6">
           <input type="text" class="form-control" 
           [ngClass] ="{
             'is-invalid':manager.invalid && (manager.dirty || manager.touched),
@@ -85,9 +95,11 @@
     <div class="form-group row">
       <div class="col-sm-10 offset-sm-2">
         <button type="submit" class="btn btn-primary">Submit</button>
+        <button class="ml-3 btn btn-primary">reset</button>
       </div>
     </div>
   </form>
+</div>
 
 
 
