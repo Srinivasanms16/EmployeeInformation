@@ -55,7 +55,7 @@ export class AddEmployee{
             debugger;
             let count = this.employees.emp.length;
             this.employees.emp.push(new employee(this.firstname.value,this.lastname.value,this.gender.value,this.email.value,
-                this.dateofbirth.value,this.role.value,this.manager.value,`id${count++}`,true));
+                this.dateofbirth.value,this.role.value,this.manager.value,`id${count+2}`,true));
                 alert("successfully added");
                 this.empform.reset();
         }

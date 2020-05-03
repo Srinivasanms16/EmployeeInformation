@@ -1,11 +1,18 @@
 <div class="container bg-light">
     <div class="row">
       <div class="col-4" *ngFor="let emp of emps">
-        <div class="card text-black mb-3 d-block" [highlight]="emp" >
-          <div class="card-header">{{emp.name}}</div>
+        <div class="card text-black mb-3 d-block" [highlight]="emp" (click)="viewemp(emp.id)" >
+          <div class="card-header" height="70">{{emp.fname}} {{emp.lname}}</div>
           <div class="card-body">
-            <h4 class="card-title">ID-{{emp.id}}</h4>
-            <p class="card-text">Employee is <span isactive >{{emp.isActive ? "Active" : "In active"}}</span></p>
+            <div class="row">
+            <div class="col-3">
+              <img  src="/assets/Images/male.png" class="mt-2 mb-2" *ngIf="emp.gender == 'male'" width="50" height="50" >
+              <img  src="/assets/Images/female.png" class="mt-2 mb-2" *ngIf="emp.gender == 'female'" width="50" height="50"  >
+            </div>
+          <div class="col-8 offset-1" >
+            <p class="card-text"><span class="font-weight-bolder">Role</span> {{emp.role}} <br> Employee is <span isactive >{{emp.isActive ? "Active" : "In active"}}</span></p>
+          </div>
+        </div>
           </div>
         </div>
        </div>
