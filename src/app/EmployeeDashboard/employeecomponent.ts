@@ -10,7 +10,7 @@ import {employees} from '../Services/employee.service'
 })
 export class employeecomponent implements OnInit,OnChanges,AfterContentInit,AfterContentChecked,AfterViewInit,AfterViewChecked,DoCheck{
     
-  emps:employee[];
+  emps:any;
 
 
     count:number = 0;
@@ -22,7 +22,11 @@ export class employeecomponent implements OnInit,OnChanges,AfterContentInit,Afte
     ngOnInit(){
      // this.count++;
       //console.log(`its onInit-${this.count}`);
-      this.emps = this.service.getEmployees();
+      debugger;
+      this.service.getEmployees().subscribe(data=>{
+        this.emps = data;
+
+      });
     }
 
     ngDoCheck(){

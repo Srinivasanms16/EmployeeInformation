@@ -1,0 +1,37 @@
+{
+  "employee": [
+    {
+      "fname": "nithin",
+      "lname": "srinir",
+      "gender": "male",
+      "email": "nithin@gmail.com",
+      "dob": "28/03/2016",
+      "role": "manager",
+      "manager": "aaa",
+      "isActive": false,
+      "id": "DyffRsL"
+    },
+    {
+      "fname": "srini",
+      "lname": "amar",
+      "gender": "male",
+      "email": "srini@gmail.com",
+      "dob": "16/07/1987",
+      "role": "manager",
+      "manager": "aaa",
+      "isActive": false,
+      "id": "7g8O96Y"
+    },
+    {
+      "fname": "yamuna",
+      "lname": "Srini",
+      "gender": "female",
+      "email": "yamuna@gmailcom",
+      "isActive": true,
+      "manager": "manager",
+      "dob": "28/03/1988",
+      "role": "manager",
+      "id": "bP2xnkq"
+    }
+  ]
+}

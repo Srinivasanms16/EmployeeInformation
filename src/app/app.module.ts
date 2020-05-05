@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {RouterModule,Routes} from '@angular/router';
 import { ReactiveFormsModule , FormsModule} from '@angular/forms'
+import {HttpClientModule} from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import{employeecomponent}  from './EmployeeDashboard/employeecomponent';
@@ -27,7 +28,8 @@ let routes:Routes = [
     BrowserModule,
     RouterModule.forRoot(routes),
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [employees],
   bootstrap: [AppComponent]

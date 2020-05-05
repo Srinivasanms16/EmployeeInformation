@@ -1,7 +1,8 @@
 import { FormGroup,FormControl, Validators } from '@angular/forms'
 import { Component } from '@angular/core';
 import employee from "../Services/employee";
-import {employees} from "../Services/employee.service"
+import {employees} from "../Services/employee.service";
+import {HttpClient,HttpHeaders} from '@angular/common/http';
 @Component({
     selector:'addemployee',
     templateUrl:'./AddEmployee.component.html'
@@ -17,10 +18,12 @@ export class AddEmployee{
     dateofbirth:FormControl;
     role:FormControl;
     manager:FormControl;
+    httpheaders:HttpHeaders;
 
-    constructor(private employees:employees){
+    constructor(private employees:employees,private httpclient:HttpClient){
        this.controlInilization();
        this.formInilization();
+       this.httpheaders = new HttpHeaders();
     }
    
     controlInilization = ()=>
@@ -52,16 +55,14 @@ export class AddEmployee{
 
     empsubmit=()=>{
         if(this.empform.valid){
-            debugger;
-            let count = this.employees.emp.length;
-            this.employees.emp.push(new employee(this.firstname.value,this.lastname.value,this.gender.value,this.email.value,
-                this.dateofbirth.value,this.role.value,this.manager.value,`id${count+2}`,true));
-                alert("successfully added");
-                this.empform.reset();
-        }
-        else{
-            alert("invalid data");
-            alert(this.manager.valid)
+
+            this.employees.addEmployee(new employee(this.firstname.value,this.lastname.value,this.gender.value,this.email.value,
+                this.dateofbirth.value,this.role.value,this.manager.value,true)).subscribe(data=>{
+                    debugger;
+                    console.log(data);
+                });
+            
+           this.empform.reset();
         }
     }
 }
