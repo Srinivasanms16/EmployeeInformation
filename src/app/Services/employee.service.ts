@@ -28,4 +28,14 @@ export class employees {
         return this.httpclient.post("http://localhost:3006/employee",emp,{headers:this.httpheader});
     }
 
+    editEmployee = (emp:employee)=>{
+        debugger;
+        return this.httpclient.put(`http://localhost:3006/employee/${emp.id}`,emp,{headers:this.httpheader});
+    }
+
+    deleteEmployee = (id)=>{
+        debugger;
+        return this.httpclient.delete(`http://localhost:3006/employee/${id}`,{headers:this.httpheader});
+    }
+
 }

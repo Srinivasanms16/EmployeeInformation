@@ -64,4 +64,15 @@ export class employeecomponent implements OnInit,OnChanges,AfterContentInit,Afte
   this.router.navigate(['viewemployee',id]);
   }
 
+  Editemp = (id)=>{
+    debugger;
+    this.router.navigate(["/add", { term: 'term' }],{ queryParams: { empid: id}});
+  }
+  
+  Deleteemp = (id)=>{
+    debugger;
+    this.service.deleteEmployee(id).subscribe(d=>{
+      console.log(d);
+    })
+  }
 }

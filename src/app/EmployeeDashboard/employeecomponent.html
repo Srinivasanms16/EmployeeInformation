@@ -1,9 +1,16 @@
 <div class="container bg-light">
     <div class="row">
       <div class="col-4" *ngFor="let emp of emps">
-        <div class="card text-black mb-3 d-block" [highlight]="emp" (click)="viewemp(emp.id)" >
-          <div class="card-header" height="70">{{emp.fname}} {{emp.lname}}</div>
-          <div class="card-body">
+        <div class="card text-black mb-3 d-block" [highlight]="emp" >
+          <div class="card-header" height="70">{{emp.fname}} {{emp.lname}}
+            <button type="button" class="close float-right" aria-label="Close" (click)="Deleteemp(emp.id)">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <button type="button" class="btn btn-default btn-sm float-right" (click)="Editemp(emp.id)" >
+              <span class="glyphicon">&#x270f;</span> 
+            </button>
+          </div>
+          <div class="card-body"  (click)="viewemp(emp.id)">
             <div class="row">
             <div class="col-3">
               <img  src="/assets/Images/male.png" class="mt-2 mb-2" *ngIf="emp.gender == 'male'" width="50" height="50" >

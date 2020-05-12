@@ -9,7 +9,7 @@ export default class  employee{
       id:string;
       isActive:boolean
     
-    constructor(fname?:string, lname?:string, gender?:string,  email?:string,
+    constructor(id?:string,fname?:string, lname?:string, gender?:string,  email?:string,
          dob?:string, role?:string, manager?:string, isActive?:boolean){
              this.fname = fname;
              this.lname = lname;
@@ -19,5 +19,8 @@ export default class  employee{
              this.manager = manager;
              this.dob = dob;
              this.role = role;
-         }    
+             this.id = id;
+         } 
+         
+         
 }
