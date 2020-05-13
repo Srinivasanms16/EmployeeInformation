@@ -1,26 +1,37 @@
 {
   "employee": [
     {
-      "fname": "nithin",
-      "lname": "srinivasan",
-      "gender": "male",
-      "email": "nithin@gmail.com",
-      "isActive": true,
-      "manager": "aaa",
-      "dob": "28/03/2016",
-      "role": "manager",
-      "id": "DyffRsL"
-    },
-    {
-      "fname": "yamuna",
+      "fname": "Nithin",
       "lname": "Srini",
-      "gender": "female",
-      "email": "yamuna@gmailcom",
+      "gender": "male",
+      "email": "nithin@gmial.com",
       "isActive": true,
       "manager": "manager",
-      "dob": "28/03/1988",
+      "dob": "28/03/2016",
       "role": "manager",
-      "id": "bP2xnkq"
+      "id": 1
+    },
+    {
+      "fname": "srini",
+      "lname": "amar",
+      "gender": "male",
+      "email": "srini@gmail.com",
+      "isActive": true,
+      "manager": "manager",
+      "dob": "16/07/1987",
+      "role": "manager",
+      "id": 2
+    },
+    {
+      "fname": "Aish",
+      "lname": "ArulPrakasam",
+      "gender": "female",
+      "email": "aish@gmail.com",
+      "isActive": true,
+      "manager": "manager",
+      "dob": "09/12/1989",
+      "role": "manager",
+      "id": 3
     }
   ]
 }

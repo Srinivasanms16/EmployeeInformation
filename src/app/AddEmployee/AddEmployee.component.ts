@@ -23,6 +23,7 @@ export class AddEmployee{
     empid:string = null;
     emp:any
     submit:string;
+    isSubmitted:boolean = false;
 
     constructor(private employeesevice:employees,private httpclient:HttpClient, private route:ActivatedRoute){
         this.route.queryParams.subscribe(parm=>{
@@ -100,21 +101,19 @@ export class AddEmployee{
 
             this.employeesevice.addEmployee(new employee( undefined,this.firstname.value,this.lastname.value,this.gender.value,this.email.value,
                 this.dateofbirth.value,this.role.value,this.manager.value,true)).subscribe(data=>{
-                    debugger;
-                    console.log(data);
+                    this.isSubmitted = true; 
+                    this.empform.reset();
                 });
             }
             else
             {
                 this.employeesevice.editEmployee(new employee(this.emp.id,this.firstname.value,this.lastname.value,this.gender.value,this.email.value,
                     this.dateofbirth.value,this.role.value,this.manager.value,true)).subscribe(data=>{
-                        debugger;
-                        console.log(data);
+                        this.isSubmitted = true; 
+                        this.empform.reset();
                     });
             }
 
-            
-           this.empform.reset();
         }
     }
 }

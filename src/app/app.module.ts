@@ -11,11 +11,16 @@ import { AddEmployee } from './AddEmployee/AddEmployee.component';
 import{ attributehighlight } from './EmployeeDashboard/highlight.attribute'; 
 
 import {employees} from './Services/employee.service';
+import {EmployeeNeedToAddedOrUpdated} from './Services/EmployeeNeedToAdded'
+import {IsAuthenticatedUser} from './Services/Authenticateuser';
 
 let routes:Routes = [
   {path:"",redirectTo:"home",pathMatch:'full'},
   {path:"home",component:employeecomponent},
-  {path:"addemployee",component:AddEmployee},
+  {path:"addemployee",
+  canActivate:[IsAuthenticatedUser],
+  canDeactivate:[EmployeeNeedToAddedOrUpdated],
+  component:AddEmployee},
   {path:"add",redirectTo:"addemployee"},
   {path:'viewemployee/:id',component:viewEmployee}
 ]
@@ -31,7 +36,7 @@ let routes:Routes = [
     FormsModule,
     HttpClientModule
   ],
-  providers: [employees],
+  providers: [employees,EmployeeNeedToAddedOrUpdated,IsAuthenticatedUser],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
