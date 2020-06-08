@@ -32,6 +32,17 @@
       "dob": "09/12/1989",
       "role": "manager",
       "id": 3
+    },
+    {
+      "fname": "Amar",
+      "lname": "Kannan",
+      "gender": "male",
+      "email": "amar@gmai.com",
+      "isActive": true,
+      "manager": "manager",
+      "dob": "05/09/1975",
+      "role": "manager",
+      "id": 4
     }
   ]
 }
