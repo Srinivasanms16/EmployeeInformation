@@ -3,7 +3,10 @@ import { Component } from '@angular/core';
 import employee from "../Services/employee";
 import {employees} from "../Services/employee.service";
 import {HttpClient,HttpHeaders} from '@angular/common/http';
-import {ActivatedRoute} from '@angular/router'
+import {ActivatedRoute} from '@angular/router';
+import { Store } from '@ngrx/store';
+import { employeeAction } from "../state/employeeState";
+import {ToastrService} from"ngx-toastr"
 @Component({
     selector:'addemployee',
     templateUrl:'./AddEmployee.component.html'
@@ -25,7 +28,9 @@ export class AddEmployee{
     submit:string;
     isSubmitted:boolean = false;
 
-    constructor(private employeesevice:employees,private httpclient:HttpClient, private route:ActivatedRoute){
+    constructor(private employeesevice:employees,private httpclient:HttpClient, 
+        private store:Store,private route:ActivatedRoute,
+        private toast:ToastrService){
         this.route.queryParams.subscribe(parm=>{
             if(parm.empid)
             {
@@ -98,22 +103,22 @@ export class AddEmployee{
 
             if(this.emp == null)
             {
-
-            this.employeesevice.addEmployee(new employee( undefined,this.firstname.value,this.lastname.value,this.gender.value,this.email.value,
-                this.dateofbirth.value,this.role.value,this.manager.value,true)).subscribe(data=>{
-                    this.isSubmitted = true; 
-                    this.empform.reset();
-                });
+               let emp = new employee( undefined,this.firstname.value,this.lastname.value,this.gender.value,this.email.value,
+                this.dateofbirth.value,this.role.value,this.manager.value,true);
+                this.store.dispatch({type:employeeAction.Add_Employee,payload:emp});
+                this.toast.success("Added Successfully..!",`${this.firstname.value}`)
+                this.isSubmitted = true; 
+                this.empform.reset();
             }
             else
             {
-                this.employeesevice.editEmployee(new employee(this.emp.id,this.firstname.value,this.lastname.value,this.gender.value,this.email.value,
-                    this.dateofbirth.value,this.role.value,this.manager.value,true)).subscribe(data=>{
-                        this.isSubmitted = true; 
-                        this.empform.reset();
-                    });
+                let emp = new employee(this.emp.id,this.firstname.value,this.lastname.value,this.gender.value,this.email.value,
+                    this.dateofbirth.value,this.role.value,this.manager.value,true);
+                    this.store.dispatch({type:employeeAction.Edit_Employe,payload:emp});
+                    this.toast.success("Edited Successfully..!",`${this.firstname.value}`)
+                    this.isSubmitted = true; 
+                    this.empform.reset();
             }
-
         }
     }
 }

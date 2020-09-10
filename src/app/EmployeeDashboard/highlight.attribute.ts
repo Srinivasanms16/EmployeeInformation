@@ -14,6 +14,7 @@ export class attributehighlight implements OnInit{
     constructor(private el:ElementRef,private render:Renderer2){}
     ngOnInit(){
     this.spanele =   this.el.nativeElement.querySelector("span[isactive]");
+   // alert(this.el.nativeElement);
     }
    // <!--bg-danger text-white-->
     @HostBinding('class.bg-danger')
@@ -24,19 +25,19 @@ export class attributehighlight implements OnInit{
 
 
     @HostListener('mouseover')
-    over(){
+    fun_over(){
                this.backgroundcolour = true;
                this.textcolour = true;
-               let classname = this.emp.isActive ? "text-info":"text-warning"
-            this.render.addClass(this.spanele, classname);
+            //    let classname = this.emp.isActive ? "text-info":"text-warning"
+            // this.render.addClass(this.spanele, classname);
     }
 
     @HostListener('mouseleave')
-    leave(){
+    fun_leave(){
         this.backgroundcolour = false;
         this.textcolour = false;
-        this.render.removeClass(this.spanele,"text-warning")
-        this.render.removeClass(this.spanele,"text-info")
+        // this.render.removeClass(this.spanele,"text-warning")
+        // this.render.removeClass(this.spanele,"text-info")
     }
 
 }

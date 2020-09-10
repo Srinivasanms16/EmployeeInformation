@@ -1,6 +1,8 @@
 import {Injectable} from '@angular/core'
 import employee from './employee'
 import {HttpClient,HttpHeaders} from '@angular/common/http'
+import { of, Observable } from 'rxjs';
+import { async } from '@angular/core/testing';
 
 @Injectable({
     providedIn:"root"
@@ -17,25 +19,43 @@ export class employees {
     }
 
     getEmployees = ()=>{
-        return this.httpclient.get("http://localhost:3006/employee",{headers:this.httpheader});
+
+            return this.httpclient.get("http://localhost:3006/employee",{headers:this.httpheader,observe:'response'});       
     }
 
     getEmployee = (id)=>{
         return this.httpclient.get(`http://localhost:3006/employee/${id}`,{headers:this.httpheader});
     }
 
-    addEmployee = (emp:employee)=>{
-        return this.httpclient.post("http://localhost:3006/employee",emp,{headers:this.httpheader});
+    addEmployee = (action)=>{
+        debugger;
+        return this.httpclient.post("http://localhost:3006/employee",action.payload,{headers:this.httpheader,observe:'response'});
     }
 
-    editEmployee = (emp:employee)=>{
+    editEmployee = (action)=>{
         debugger;
-        return this.httpclient.put(`http://localhost:3006/employee/${emp.id}`,emp,{headers:this.httpheader});
+        return this.httpclient.put(`http://localhost:3006/employee/${action.payload.id}`,action.payload,{headers:this.httpheader,observe:'response'});
     }
 
-    deleteEmployee = (id)=>{
+    deleteEmployee  = (action)=>{
         debugger;
-        return this.httpclient.delete(`http://localhost:3006/employee/${id}`,{headers:this.httpheader});
+        return this.httpclient.delete(`http://localhost:3006/employee/${action.payload}`,{headers:this.httpheader,observe:'response'});
+       
+        (async()=>this.deleteEmployee1({}))()
     }
+
+    deleteEmployee1 = async (action)=>{
+        debugger;
+        let response = await this.httpclient.delete(`http://localhost:3006/employee/${action.payload}`,{headers:this.httpheader,observe:'response'}).toPromise();
+        if(response.status === 200)
+        {
+            return {id:action.payload};
+        }
+        else{
+            return {id:-1};
+        }
+    }
+
+
 
 }

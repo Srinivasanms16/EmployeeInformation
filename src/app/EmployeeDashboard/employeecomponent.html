@@ -1,5 +1,5 @@
-<div class="container bg-light" style="min-height: 350px !important;" >
-    <div class="row">
+<div class="container bg-light" style="min-height: 600px !important;" >
+    <div class="row"  *ngIf="emps">
       <div class="col-4" *ngFor="let emp of emps">
         <div class="card text-black mb-3 d-block" [highlight]="emp" >
           <div class="card-header" height="70">{{emp.fname}} {{emp.lname}}
