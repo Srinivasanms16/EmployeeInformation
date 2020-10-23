@@ -1,70 +1,26 @@
 {
   "employee": [
     {
-      "fname": "nithin shivaa",
-      "lname": "Srinivasan",
-      "gender": "male",
-      "email": "nithin@gmail.com",
-      "isActive": true,
-      "manager": "manager",
-      "dob": "28/03/2016",
-      "role": "manager",
-      "id": 1
-    },
-    {
       "fname": "srinivasan",
       "lname": "amarnathan",
       "gender": "male",
-      "email": "nithin@gmail.com",
-      "isActive": true,
-      "manager": "manager",
-      "dob": "28/03/2016",
-      "role": "manager",
-      "id": 2
-    },
-    {
-      "fname": "nithin",
-      "lname": "srinivasan",
-      "gender": "male",
-      "email": "nithin@gmail.com",
-      "isActive": true,
-      "manager": "manager",
-      "dob": "28/03/2016",
-      "role": "manager",
-      "id": 3
-    },
-    {
-      "fname": "nithin",
-      "lname": "Srini",
-      "gender": "male",
-      "email": "nithin@gmail.com",
-      "isActive": true,
-      "manager": "manager",
-      "dob": "28/03/2016",
-      "role": "manager",
-      "id": 4
-    },
-    {
-      "fname": "yamuna",
-      "lname": "Srini",
-      "gender": "female",
       "email": "srini@gmail.com",
       "isActive": true,
-      "manager": "manager",
-      "dob": "28/03/1988",
-      "role": "manager",
-      "id": 6
+      "manager": "admin",
+      "dob": "16/07/1987",
+      "role": "Manager",
+      "id": 1
     },
     {
-      "fname": "pavi",
-      "lname": "venkat",
-      "gender": "female",
-      "email": "nithin@gmail.com",
+      "fname": "nithin shivaa",
+      "lname": "s",
+      "gender": "male",
+      "email": "nithin@gmial.com",
       "isActive": true,
-      "manager": "manager",
+      "manager": "1",
       "dob": "28/03/2016",
-      "role": "manager",
-      "id": 7
+      "role": "Lead",
+      "id": 2
     }
   ]
 }

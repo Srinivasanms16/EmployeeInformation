@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  EmpAPI:"https://srini-empmang-api.herokuapp.com/emp"
 };

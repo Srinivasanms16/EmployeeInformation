@@ -1,11 +1,11 @@
 <div class="row">
-<div class="col-lg-12 offset-lg-5">
+<div class="col-lg-3 offset-lg-5">
     <img  src="/assets/Images/male.png" class="mt-2 mb-2" *ngIf="selectedEmployee.gender == 'male'" width="100" height="100" >
     <img  src="/assets/Images/female.png" class="mt-2 mb-2" *ngIf="selectedEmployee.gender == 'female'" width="100" height="100" >
 </div>
 </div>
 <div class="row">
-<div class="col-lg-6 offset-lg-3" >
+<div class="col-lg-6 offset-lg-3" style="min-height: 65vh;" >
         <table class="table  table-striped table-borderless">
             <tbody>
               <tr>
@@ -27,7 +27,7 @@
               </tr>
               <tr>
                 <td> <span class="font-weight-bold"> Manager</span></td>
-                <td colspan="2" ><span> <em>{{selectedEmployee.manager}}</em></span></td>
+                <td colspan="2" ><span> <em>{{empManager}}</em></span></td>
               </tr>
             </tbody>
           </table>

@@ -1,19 +1,25 @@
 import { Component,OnInit,OnChanges,OnDestroy,AfterContentInit,AfterContentChecked,AfterViewInit,AfterViewChecked,Input, ViewChildren, QueryList } 
 from '@angular/core';
 import { employeecomponent } from './EmployeeDashboard/employeecomponent';
+import {Store} from "@ngrx/store";
+import {LoadEmployee} from "./state/employeeState"
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html'
 })
-export class AppComponent implements AfterViewInit  {
+export class AppComponent implements AfterViewInit,OnInit  {
   title = 'employee';
 
   @ViewChildren(employeecomponent) 
   ecomponent:QueryList<employeecomponent>;
-  constructor()
+  constructor(private store:Store<any>)
   {
     
+  }
+
+  ngOnInit(){
+    this.store.dispatch(new LoadEmployee());
   }
 
   ngAfterViewInit(){
@@ -24,4 +30,4 @@ export class AppComponent implements AfterViewInit  {
   }
 
 
-}
+} 

@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { CanDeactivate , ActivatedRouteSnapshot,RouterStateSnapshot} from '@angular/router';
-import {AddEmployee} from '../AddEmployee/AddEmployee.component';
+import {
+    AddEmployee
+} from '../AddEmployee/AddEmployee.component';
 
 @Injectable()
 export class EmployeeNeedToAddedOrUpdated implements CanDeactivate<AddEmployee>{

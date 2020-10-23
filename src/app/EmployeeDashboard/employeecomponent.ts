@@ -6,7 +6,8 @@ import employee from "../Services/employee"
 import {employees} from '../Services/employee.service'
 import { Store } from "@ngrx/store";
 import { employeeAction } from "../state/employeeState"
-import { NgxSpinnerService } from "ngx-spinner"
+import { NgxSpinnerService } from "ngx-spinner";
+import {DeleteEmploye,LoadEmployee} from "../state/employeeState";
 //import { LoadEmployee } from "../state/EmployeeAction";
 import { Observable } from 'rxjs';
 @Component({
@@ -32,12 +33,12 @@ export class employeecomponent implements OnInit,OnChanges,AfterContentInit,Afte
         {
           setTimeout(()=>{
             this.spinner.hide();
-          },7000)
+          },1000)
           this.emps = x.employeeReducer.employees;
          
         }
       });
-      this.store.dispatch({type:employeeAction.Load_Employee});
+     
     }
 
     ngDoCheck(){
@@ -82,13 +83,6 @@ export class employeecomponent implements OnInit,OnChanges,AfterContentInit,Afte
   
   Deleteemp = (id)=>{
     debugger;
-    // this.service.deleteEmployee(id).subscribe(d=>{
-    //   console.log("user is deleted");
-    //   this.service.getEmployees().subscribe(data=>{
-    //     this.emps = data;
-
-    //   });
-    // });
-    this.store.dispatch({type:employeeAction.Delete_Employee,payload:id});
+    this.store.dispatch(new DeleteEmploye(id));
   }
 }

@@ -3,6 +3,7 @@ import employee from './employee'
 import {HttpClient,HttpHeaders} from '@angular/common/http'
 import { of, Observable } from 'rxjs';
 import { async } from '@angular/core/testing';
+import {environment} from "../../environments/environment";
 
 @Injectable({
     providedIn:"root"
@@ -18,44 +19,54 @@ export class employees {
      this.httpheader.set('access-control-allow-origin','*');   
     }
 
-    getEmployees = ()=>{
+  
 
-            return this.httpclient.get("http://localhost:3006/employee",{headers:this.httpheader,observe:'response'});       
+    getEmployees =async ()=>{
+
+            const response =await this.httpclient.get<employee[]>(environment.EmpAPI,{headers:this.httpheader,observe:'response'}).toPromise();   
+            if(response.ok)
+            {
+                if(response.body)
+                {
+                    return {error:undefined,payload:response.body}
+                }
+                return {error:"issue in getting emplyee",payload:undefined}
+            }    
     }
 
     getEmployee = (id)=>{
-        return this.httpclient.get(`http://localhost:3006/employee/${id}`,{headers:this.httpheader});
+        return this.httpclient.get(`${environment.EmpAPI}/${id}`,{headers:this.httpheader});
     }
 
-    addEmployee = (action)=>{
-        debugger;
-        return this.httpclient.post("http://localhost:3006/employee",action.payload,{headers:this.httpheader,observe:'response'});
-    }
-
-    editEmployee = (action)=>{
-        debugger;
-        return this.httpclient.put(`http://localhost:3006/employee/${action.payload.id}`,action.payload,{headers:this.httpheader,observe:'response'});
-    }
-
-    deleteEmployee  = (action)=>{
-        debugger;
-        return this.httpclient.delete(`http://localhost:3006/employee/${action.payload}`,{headers:this.httpheader,observe:'response'});
-       
-        (async()=>this.deleteEmployee1({}))()
-    }
-
-    deleteEmployee1 = async (action)=>{
-        debugger;
-        let response = await this.httpclient.delete(`http://localhost:3006/employee/${action.payload}`,{headers:this.httpheader,observe:'response'}).toPromise();
-        if(response.status === 200)
+    addEmployee =async (action)=>{
+        
+        const response = await this.httpclient.post<employee>(environment.EmpAPI,action.payload,{headers:this.httpheader,observe:'response'}).toPromise();
+        if(response.ok)
         {
-            return {id:action.payload};
+             return {error:undefined,employee:response.body}
         }
-        else{
-            return {id:-1};
-        }
+        return {error:"inssue in adding employee",employee:undefined};
     }
 
+    editEmployee =async (action)=>{
+        debugger;
+        const response = await this.httpclient.patch<employee>(`${environment.EmpAPI}/${action.payload.id}`,action.payload,{headers:this.httpheader,observe:'response'}).toPromise();
+        if(response.ok)
+        {
+             return {error:undefined,employee:response.body}
+        }
+        return {error:"inssue in editing employee",employee:undefined};
+    }
+
+    deleteEmployee  =async (action)=>{
+        debugger;
+        const response = await this.httpclient.delete<employee>(`${environment.EmpAPI}/${action.payload}`,{headers:this.httpheader,observe:'response'}).toPromise();
+        if(response.ok)
+        {
+             return {error:undefined,employee:response.body}
+        }
+        return {error:"inssue in deleteting employee",employee:undefined};
+    }
 
 
 }

@@ -1,5 +1,5 @@
 
-<div class="col-lg-8 offset-lg-3" >
+<div class="col-lg-8 offset-lg-3" style="min-height: 600px !important;">
 <form  [formGroup]="empform" novalidate (ngSubmit)="empsubmit()">
     <div class="form-group row" formGroupName="name" >
         <label  class="col-sm-2 col-form-label">Name</label>
@@ -67,29 +67,18 @@
     <div class="form-group row">
         <label for="role" class="col-sm-2 col-form-label">Role</label>
         <div class="col-sm-6">
-          <input type="text" class="form-control" 
-          [ngClass] ="{
-            'is-invalid':role.invalid && (role.dirty || role.touched),
-            'is-valid':role.valid && (role.dirty || role.touched)
-        }"
-          id="role" formControlName="role">
-          <div class="invalid-feedback">
-            <p><em>Enter role.</em></p>
-          </div>
+        <select class="form-control" formControlName="role">
+          <option *ngFor="let role of roleList" [value]="role">{{role}}</option>
+        </select>
         </div>
       </div>
       <div class="form-group row">
         <label for="manager" class="col-sm-2 col-form-label">Manager</label>
         <div class="col-sm-6">
-          <input type="text" class="form-control" 
-          [ngClass] ="{
-            'is-invalid':manager.invalid && (manager.dirty || manager.touched),
-            'is-valid':manager.valid && (manager.dirty || manager.touched)
-        }"
-          id="manager"  formControlName="manager">
-          <div class="invalid-feedback">
-           <p><em>Enter manager name.</em></p>
-          </div>
+       <select class="form-control" formControlName="manager">
+         <option value="admin">Admin</option>
+         <option *ngFor="let emp of empList" [value]="emp.id" >{{emp.fname}} {{emp.lname}}</option>
+       </select>
         </div>
       </div>
     <div class="form-group row">
